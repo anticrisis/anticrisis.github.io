@@ -6,13 +6,9 @@ date: Wed 02 Aug 2017 06:03:00 PM HST
 *"Because all the things were invented before we were born."*
 As unimaginable as it may sound, Google has not yet "organized the
 world's information" about Common Lisp. The best tutorials are hard
-to find. If you want the easiest path to get started, look here.
+to find. Here's how I got started.
 
-* TOC
-{:toc}
-
-
-### Install roswell
+## Install roswell ##
 
 [Roswell](https://github.com/roswell/roswell) is a tool that helps
 you download various implementations of Common Lisp and switch
@@ -37,7 +33,7 @@ $ yaourt -S roswell
 
 Or a `.zip` file for Windows.
 
-#### Linux or Windows
+### Linux or Windows ###
 
 If you're on Windows, you know it's come a long way in the last 10
 years. Microsoft is even shipping Ubuntu Bash on Windows. But if you
@@ -46,9 +42,11 @@ install [VirtualBox](https://www.virtualbox.org/) and a Linux
 distribution of your choice in a virtual machine.
 
 If you're not a Linux fan, it's fine to stick with Windows. There's
-even a good editor, [Atom](#setting-up-atom-for-slime)
+even a good choice of
+editor, [Atom](#setting-up-atom-for-slime). That is, if you don't
+want to use emacs. (See [Editors.](#editors)
 
-### Install Common Lisp
+## Install Common Lisp ##
 
 Once Roswell is installed, do this: 
 
@@ -92,9 +90,9 @@ $
 
 But nobody uses the REPL from the command line like this. You want
 to use an editor with support for an integrated
-REPL (notice I didn't say `emacs`). See [Editors.](Editors)
+REPL (notice I didn't say `emacs`). See [Editors.](#editors)
 
-#### Why SBCL?
+### Why SBCL? ###
 
 There are lots of Common Lisp "implementations" to choose from, some
 free and some commercial, so why choose SBCL? Because it has
@@ -118,7 +116,7 @@ this writing it's finicky and certainly not the way to get started
 in Common Lisp.
 
 
-### Editors
+## Editors ##
 
 The joke is that everybody wants to try Common Lisp until they hear
 you have to install `emacs` in step one. Well, you don't.
@@ -128,14 +126,14 @@ supplies a [plugin](https://atom.io/packages/atom-slime) to get you
 closer to the emacs-inspired interactive editing nirvana we all
 dream about it.
 
-#### Setting up Atom for SLIME
+### Setting up Atom for SLIME ###
 
 You do have to jump through a few hoops but it's nothing like
 getting a remotely complicated nodejs Javascript project up and
 running with linting, testing, bundling, etc.
 
 First, after installing the Atom editor, follow the instructions on
-this page: https://atom.io/packages/atom-slime
+this page: [atom-slime](https://atom.io/packages/atom-slime)
 
 Aside from installing the Atom packages `atom-slime`,
 `language-lisp`, and `lisp-paredit`, you need to get a copy of the
@@ -163,7 +161,7 @@ you'll see a REPL pop up.
 (When I did this, it didn't work the first time. I exited Atom,
 checked my settings, and tried again, and then it worked.)
 
-#### Setting up Emacs for SLIME
+### Setting up Emacs for SLIME ###
 
 If you're an `emacs` user, you know you live for the
 frustration-followed-by-breakthrough-dopamine-rush of combing
@@ -204,7 +202,7 @@ unfortunately-named `inferior-lisp-program`.
 ```
 
 
-### Getting libraries
+## Getting libraries ##
 
 You want to `npm install` but since Common Lisp standardized before
 `npm` was even conceived, it's not quite that simple. There are two
@@ -220,7 +218,7 @@ made obsolete. See, history *is* fascinating. (There are people
 still working on this idea, by the way. Go check them out, it's
 wild.)
 
-#### Quicklisp
+### Quicklisp ###
 
 Quicklisp is like clojars or the npm registry. It's a distribution
 site for vetted libraries. One of its major drawbacks is that it's
@@ -250,7 +248,7 @@ Quicklisp is that you can't refer to git versions of libraries.)
 Quickload will take care of downloading your libraries, but it won't
 load them into your REPL. For that, you need ASDF.
 
-#### ASDF
+### ASDF ###
 
 ASDF loads code from your local disk into a running Lisp image. It's
 also the way you configure your libraries for sharing with other
@@ -272,7 +270,7 @@ provided by ASDF. Like most things, including Clojure, Node, etc,
 getting this file right is a bit of a pain in the neck until you
 learn it.
 
-##### Version numbers
+#### Version numbers ####
 
 Apparently the Common Lisp community doesn't like to use or depend
 on library version numbers. Now, I happen to know for a fact that
@@ -290,7 +288,7 @@ As far as I know, there is no tool like `npm` that can fetch a
 specific version of a library from the Internets. Seems odd, no?
 
 
-### Directories
+## Directories ##
 
 Ok, so you've installed Roswell, you've learned about Quicklisp and
 ASDF, and your home directory now has a few new `.` directories.
@@ -315,7 +313,7 @@ command is which, and restarting the REPL takes about a half-second,
 so that's what I do.)
 
 (By the way, if you're on Windows, your home directory might be in
-\Users\you\AppData\Roaming\ or \Users\you. I use Windows and I still
+`\Users\you\AppData\Roaming\` or `\Users\you`. I use Windows and I still
 can't figure out why sometimes it's one or the other.)
 
 If you're more particular about your directories, you may need to
@@ -334,7 +332,7 @@ This file tells ASDF to look for code under my `~/dev/common-lisp`
 directory, because I like to pretend there are non-dev things I
 might use my computer for.
 
-#### Roswell and Quicklisp directories
+### Roswell and Quicklisp directories ###
 
 The `.roswell` directory has a pretty complex organizational system,
 because it needs to manage multiple Common Lisp implementations as
@@ -346,61 +344,26 @@ Quicklisp will "load" them from there instead of the Internet. I
 don't use that, but apparently there use to be something called
 "symlink farming" which apparently was quite popular.
 
-## Data types
+## References
 
-Writing code with simple data types is a joy. Hash tables (maps),
-sets and vectors should be as easy to create as lists.
+- For other great beginner resources, see the sidebar
+on [/r/lisp](https://reddit.com/r/lisp).
 
-``` common-lisp
-(list 1 2 3) => '(1 2 3)
-(v 1 2 3) => #(1 2 3)
-(set 1 2 3) => #S(SET :ITEMS (1 2 3))
-(ht :a 1 :b 2 :c 3) => #<HASH-TABLE :TEST EQUAL :COUNT 3...>
-(seq (ht :a 1 :b 2) => '((:a 1) (:b 2))
-```
+- The definitive (well, almost) ANSI Common Lisp spec is available
+  online at something called
+  the
+  [HyperSpec](http://www.lispworks.com/documentation/HyperSpec/Front/Contents.htm). It
+  may make your eyes bleed because it was typeset in the 90s and has
+  an overly restrictive license that prohibits anyone else from
+  improving it. There is no better resource online, unfortunately, and
+  once you get used to every other word being an underlined hyperlink
+  (wow, if you use your pointing device and click the word, it takes
+  you to another page!), it can be quite helpful to understand the
+  finer points of Common Lisp.
+  - The best way to use the HyperSpec is to use Google to search
+    for, for example, `CLHS remove-if-not`
 
-Sets are wrapped in a struct because Common Lisp's native
-representation of a set is otherwise indistinguishable from a list.
+## Table of contents
+* TOC
+{:toc}
 
-`seq` converts these simple types to a sequence. Lists and vectors
-are already sequences, so they are unchanged. Sets and hash tables
-are converted to lists.
-
-If you don't like abbreviations, you can still use the `#(...)`
-reader macro for simple vectors, and you can make a longer alias for
-`ht` if you need it.
-
-## Language functions
-
-`fn` is a macro to save typing with the creation and use of lambda
-functions. I know, I should get used to it, but it always takes me
-an extra second or two to find the `#` on my keyboard.
-
-``` common-lisp
-(fn (x) (inc x)) => (lambda (x) (inc x))
-(fn no-hashtags-please) => #'no-hashtags-please
-(fn make-it-so number one) => (funcall make-it-so number one)
-```
-
-## Collection functions
-
-#### filter
-
-`filter` is a wrapper around `remove-if-not`, that famously
-deprecated and subsequently un-deprecated function. It takes a
-predicate function and a collection, which can be either a list,
-vector, set or hash-table.
-
-Conveniently, it preserves the type of the input collection.
-
-``` common-lisp
-(filter 
-```
-
-`filter` also supports the handy Common Lisp convention of providing
-an additional `:key` function to transform the keys before they are
-passed through the predicate.
-
-``` common-lisp
-(filter (fn odd?) (ht :a 1 :b 2 :c 3) :key (fn cadr
-```
