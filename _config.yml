@@ -1,18 +1,32 @@
-title: Contributions Attributed to Anticrisis
-github_username: anticrisis
+title: Contributions
 
 description: >-
+  attributed to anticrisis
+
+description_2: >-
+
+logo: "/assets/images/tracer_icon.png"
+baseurl: ""
+
+author: "Anticrisis"
+bio: >-
   "Be kind whenever possible. It is always possible."
   -- Dalai Lama
-description_2: >-
+  <br>
   "The true sign of intelligence is not knowledge but imagination."
   -- A. Einstein
+author_image: "/assets/images/tracer_icon.png"
+#twitter_username: ""
+github_username: anticrisis
 
-author: Anticrisis
+analytics_id: ""
+
+markdown: kramdown
+
+kramdown:
+  parse_block_html: true
 
 gems:
-  - jekyll-feed
   - jekyll-paginate
   
 paginate: 5
-
