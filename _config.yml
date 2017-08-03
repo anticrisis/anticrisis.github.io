@@ -1,1 +1,18 @@
-theme: jekyll-theme-cayman
+title: Contributions Attributed to Anticrisis
+github_username: anticrisis
+
+description: >-
+  "Be kind whenever possible. It is always possible."
+  -- Dalai Lama
+description_2: >-
+  "The true sign of intelligence is not knowledge but imagination."
+  -- A. Einstein
+
+author: Anticrisis
+
+gems:
+  - jekyll-feed
+  - jekyll-paginate
+  
+paginate: 5
+
