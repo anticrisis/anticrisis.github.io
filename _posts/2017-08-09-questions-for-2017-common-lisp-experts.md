@@ -70,3 +70,5 @@ the Common Lisp community.
 * [Emacs Slime](https://github.com/slime/slime) or [Atom Slime](https://atom.io/packages/atom-slime), take your pick
 * See [Quickdocs](http://quickdocs.org/) for popular curated libraries
 * ALL CAPS doesn't mean the compiler or documentation is mad at you, it's just a bit hard of hearing after all these years
+
+Comments are on [Reddit](https://www.reddit.com/r/lisp/comments/6snw5d/questions_for_2017_common_lisp_experts/)
