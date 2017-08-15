@@ -71,4 +71,18 @@ the Common Lisp community.
 * See [Quickdocs](http://quickdocs.org/) for popular curated libraries
 * ALL CAPS doesn't mean the compiler or documentation is mad at you, it's just a bit hard of hearing after all these years
 
-Comments are on [Reddit](https://www.reddit.com/r/lisp/comments/6snw5d/questions_for_2017_common_lisp_experts/)
+
+----
+
+*Update, August 14, 2017*
+
+This post generated a large number of very informative and
+thoughtful replies from the community on
+[Reddit](https://www.reddit.com/r/lisp/comments/6snw5d/questions_for_2017_common_lisp_experts/),
+for which I'm grateful.
+
+I'm also grateful to [phoe](https://blog.teknik.io/phoe) for
+compiling the answers in a more pleasing format. See his [Answers
+from 2017 Common Lisp experts](https://blog.teknik.io/phoe/p/365)
+([mirror](https://gist.github.com/phoe/d93f968f22bbcc87070cdc5831762021)).
+
