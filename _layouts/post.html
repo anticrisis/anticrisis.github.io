@@ -14,8 +14,9 @@ layout: default
     <footer class="post-footer">
       <section class="share">
         <a class="icon" href="https://twitter.com/intent/tweet?url={{ site.url }}{{ page.id }}&text={{page.title | cgi_escape}}&via={{ site.twitter_username }}" target="_blank">
-          Share on
-          {% include icon-twitter.html %}
+            Share on
+            <span class="icon icon--twitter">{% include icon-twitter.svg %}</span>
+          
         </a>
       </section>
     </footer>
