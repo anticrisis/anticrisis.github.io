@@ -1,6 +1,6 @@
 ---
 title: How I got started with Common Lisp in 2017
-date: Mon 04 Sep 2017 11:30:00 AM HST
+date: Mon 04 Sep 2017 10:36:31 AM HST
 ---
 
 *"Because all the interesting things in life were invented before
