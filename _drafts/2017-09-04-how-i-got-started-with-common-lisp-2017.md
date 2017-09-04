@@ -1,27 +1,31 @@
 ---
-title: Getting started with Common Lisp in 2017
-date: Wed 02 Aug 2017 06:03:00 PM HST
+title: How I got started with Common Lisp in 2017
+date: Mon 04 Sep 2017 10:36:31 AM HST
 ---
 
 *"Because all the interesting things in life were invented before
 you were born."*
 
-As crazy as it may sound, Google has not yet organized the world's
-information about Common Lisp. The best tutorials are hard to find.
+As crazy as it may sound, Google has not yet "organized the world's
+information" about Common Lisp. The best tutorials are hard to find.
 Here's how I got started.
 
-*Author's note:* I started on this post before publishing my
-previous entry, [Questions for Common Lisp
-Experts](https://anticrisis.github.io/2017/08/09/questions-for-2017-common-lisp-experts.html),
-so I am much smarter about why things work they way they do in
-Common Lisp today. However, I thought it might still be helpful for
-other newcomers to see how I went about getting started with Common
-Lisp. I would still recommend this approach.
+> *Author's note:* I started on this post before publishing my
+> previous entry, [Questions for Common Lisp
+> Experts](https://anticrisis.github.io/2017/08/09/questions-for-2017-common-lisp-experts.html),
+> so I am much smarter today about why things work they way they do
+> in Common Lisp. However, I thought it might still be helpful for
+> other newcomers to see how I went about getting started with
+> Common Lisp. Some of the concepts in here feel a little too basic
+> now, but at the time, they were a struggle to get to. In that
+> sense, this is both a tutorial and an experience report. I would
+> still recommend this approach.
 
 ## Setting the stage ##
 
-If you're used to exploring different modern language environments,
-Common Lisp is daunting and unusual in a number of ways.
+If you're used to exploring different modern language environments
+(i.e. those that got their start in the 21st century), Common Lisp
+is daunting and unusual in a number of ways.
 
 First of all, the term "Common Lisp" refers to a language standard,
 not a particular compiler or implementation. Since that standard was
@@ -40,7 +44,7 @@ implementations to choose from, each of which has its own
 you don't need to build from source if you just want to start
 learning the darned thing.
 
-Fortunately, less than a decade ago, someone developed the
+Fortunately, less than a decade ago, a kind soul developed the
 [Roswell](https://github.com/roswell/roswell) tool, which manages
 the whole process of fetching, building, and switching between the
 various Common Lisp implementations that are available via open
@@ -129,9 +133,9 @@ can do much more, see the documentation.
 There are lots of Common Lisp implementations to choose from, some
 free and some commercial, so why choose SBCL? Because it has a
 [github repository](https://github.com/sbcl/sbcl) (which is a mirror
-of its SourceForge repository, but at least the source is there); it
-has a monthly release schedule, which means it's being actively
-improved.
+of its SourceForge repository, but at least the source is there);
+and it has a monthly release schedule, which means it's being
+actively improved.
 
 One of the advantages cited by Common Lisp advocates is that there
 are many compatible implementations of the language standard, which
@@ -157,11 +161,11 @@ dream about it.
 
 ### Setting up Atom for SLIME ###
 
-*Author's note:* I don't use this editor, but I did go through this
-process and got an SBCL REPL up and running inside Atom. (Someone on
-reddit recently said, "please don't recommend Atom-Slime," so there
-may still be some problems. Unfortunately, there are few open source
-alternatives on Windows.)
+> *Author's note:* I don't use this editor, but I did go through this
+> process and got an SBCL REPL up and running inside Atom. (Someone on
+> reddit recently said, "please don't recommend Atom-Slime," so there
+> may still be some problems. Unfortunately, there are few open source
+> alternatives on Windows.)
 
 You do have to jump through a few hoops but it's nothing like
 getting a remotely complicated nodejs Javascript project up and
@@ -200,8 +204,8 @@ checked my settings, and tried again, and then it worked.)
 
 I'm going to assume you already understand how to manage code in
 parentheses, but if you don't, consider installing paredit or
-smartparents. (Parinfer is a newer choice, innovative approach, but
-I find it finicky.)
+smartparents. (Parinfer is a newer choice with an innovative
+approach, but I find it finicky.)
 
 If you think you're going to manage nested parentheses without the
 help of a plugin, forget about it. There is no reason to do that,
@@ -243,6 +247,7 @@ need.
   (setf slime-default-lisp 'roswell))
 
 (add-hook 'text-mode-hook 'turn-on-auto-fill)
+(add-hook 'lisp-mode-hook 'turn-on-auto-fill)
 ```
 
 #### prelude-modules.el
@@ -263,6 +268,16 @@ Then edit `~/.emacs.d/prelude-modules.el`, uncomment the
 `prelude-common-lisp` line, and restart emacs. It will download and
 install the necessary packages emacs needs to get you on your lispy
 road at startup.
+
+### Portacle ###
+
+If you're not looking to set up a long-term development environment
+and just want to give Common Lisp a try, take a look at
+[Portacle](https://shinmera.github.io/portacle/). It's a one-click
+installer that even works on Windows, that gives you an emacs editor
+along with a recent version of SBCL. There's a big fat red warning
+on its home page, which is why I steered away from it. But the
+Windows installer does work.
 
 
 ## Getting libraries ##
@@ -328,6 +343,11 @@ this
 [StackOverflow](https://stackoverflow.com/questions/45642330/why-do-many-common-lisp-systems-use-a-single-packages-lisp-file/)
 question and answer for more background.
 
+Personally, I find the use of a single global namespace makes it
+difficult to separate concerns, even if Common Lisp does not
+strictly enforce information-hiding. So I tend to stick with the
+one-file-one-module/namespace/package approach.
+
 Next, a `system` is what we would call a `library` or an
 `application` today. It's a collection of source files that
 represent packages, plus additional things like test files,
@@ -345,26 +365,64 @@ template-driven get-started-with-a-new-project things out there, but
 it'll at least ensure your initial `defsystem` form is correct, and
 you can edit it from there.
 
+#### An example ####
 
+Here is the `.asd` file from a library project I'm working on. It
+makes use of ASDF's `package-inferred-system` scheme, which I gather
+is ASDF's way of supporting the one-file-one-package approach. The
+main benefit is you don't have to enumerate your source files,
+because ASDF finds them in the current directory, and finds
+transient dependencies by reading your `defpackage` or
+`define-package` form.
+
+``` common-lisp
+(defsystem :anticrisis.retro
+  :name "It's back to the future all over again."
+  :version "0.0.1"
+  :license "MIT"
+  :author "https://github.com/anticrisis"
+  :class :package-inferred-system
+  :depends-on (:alexandria
+               :named-readtables
+               :bordeaux-threads
+               :local-time
+               :anticrisis.retro/core
+               :anticrisis.retro/readtable
+               :anticrisis.retro/user)
+  :in-order-to ((test-op (test-op :anticrisis.retro.dev))))
+```
+
+In this system, I use the Clojure-esque approach of implementing
+functionality in separate namespaces (which don't need to be listed
+here), and importing/re-exporting them from a `core` package. Again,
+the nice thing is I don't generally have to touch this file when I
+create new source files.
+
+There is probably need for a complete tutorial on how to do this.
 
 #### Version numbers and dependency management ####
 
-Apparently the Common Lisp community doesn't like to use or depend
-on library version numbers. Now, I happen to know for a fact that
-the whole idea of version numbering existed before Common Lisp was
-standardized, so I'm not sure what the reasoning here is. I suppose
-it encourages library writers to always maintain backward
+Apparently the Common Lisp community doesn't generally explicitly
+depend on library version numbers. Now, I happen to know for a fact
+that the whole idea of version numbering existed before Common Lisp
+was standardized, so I'm not sure what the reasoning here is. I
+suppose it encourages library writers to always maintain backward
 compatibility, which is a great thing. But it is confusing for
 people coming from other library ecosystems.
 
-ASDF does support declaring dependencies on external libraries (aka
-"systems") with specific versions. But no one seems to use that, and
-it isn't obviously clear how that would work with Quicklisp.
+ASDF does support declaring dependencies on external libraries with
+specific versions. But few projects seem to use that, and it isn't
+obviously clear how that would work with Quicklisp.
 
 Fortunately, there is a Common Lisp tool called
 [qlot](https://github.com/fukamachi/qlot) that aims to provide
 project-local dependency management in the style of `npm`.
 
+For more background on the traditional approach to packages in
+Common Lisp, including a detailed explanation from Rainer Joswig
+(who is the single most dedicated and helpful Common Lisp expert
+publishing regularly), see this [Stackoverflow
+question](https://stackoverflow.com/questions/45642330/why-do-many-common-lisp-systems-use-a-single-packages-lisp-file).
 
 ## Directories ##
 
@@ -388,7 +446,7 @@ the way, that if you add new `.asd` files or systems, you need to
 reset ASDF. The simplest way to do that is to restart your REPL, but
 there are also ASDF commands. Unfortunately, I always forget which
 command is which, and restarting the REPL takes about a half-second,
-so that's what I do.)
+so that's what I do.
 
 (By the way, if you're on Windows, your home directory might be in
 `\Users\you\AppData\Roaming\` or `\Users\you`. I use Windows and I still

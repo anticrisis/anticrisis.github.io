@@ -1,6 +1,5 @@
 @import 'bourbon/bourbon';
 @import 'syntax-highlighting';
-@import 'anticrisis';
 
 $grey-color:       #828282;
 
@@ -521,3 +520,5 @@ pre {
 .pagination .disabled {
     opacity: 0;
 }
+
+@import 'anticrisis';
