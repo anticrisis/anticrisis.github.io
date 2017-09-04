@@ -1,6 +1,6 @@
 ---
 title: How I got started with Common Lisp in 2017
-date: Mon 04 Sep 2017 10:36:31 AM HST
+date: Mon 04 Sep 2017 11:30:00 AM HST
 ---
 
 *"Because all the interesting things in life were invented before
@@ -534,7 +534,8 @@ Common Lisp, like all Lisps, rewards those who invest the time to
 learn. I hope this little guide helps at least one person save a
 little time with the boring stuff so they can get to the good stuff.
 
-Comments are always welcome!
+Comments are always welcome and are on
+[reddit](https://www.reddit.com/r/lisp/comments/6y3db8/how_i_got_started_with_common_lisp_in_2017/).
 
 ## Table of contents
 * TOC
