@@ -515,7 +515,10 @@ don't use that, but apparently there use to be something called
   word, it takes you to another page!), it can be quite helpful to
   understand the finer points of Common Lisp.
   - The best way to use the HyperSpec is to use Google to search
-    for, for example, `CLHS remove-if-not`
+    for, for example, `CLHS remove-if-not`. If you use emacs/SLIME,
+    `C-c C-d h` will get you to the HyperSpec even faster, for all
+    those times Google doesn't load. (Thanks to
+    [Grue](https://www.reddit.com/user/Grue) for pointing this out.)
   - If you can't read the website because of eye damage, keep
     trying. Amazingly, after a few weeks of repeated exposure, I can
     now actually read it.
