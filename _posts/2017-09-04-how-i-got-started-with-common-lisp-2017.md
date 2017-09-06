@@ -540,6 +540,24 @@ little time with the boring stuff so they can get to the good stuff.
 Comments are always welcome and are on
 [reddit](https://www.reddit.com/r/lisp/comments/6y3db8/how_i_got_started_with_common_lisp_in_2017/).
 
+## Updates
+
+From comments and messages I've received since originally publishing
+this, let me add the following:
+
+- Another project template skeleton is
+  [cl-project](https://github.com/fukamachi/cl-project), which
+  adheres to the practice of one-file-one-package, and includes the
+  boilerplate needed for unit testing. (Thanks to
+  [dzecniv](https://www.reddit.com/user/dzecniv).)
+- I left out the [Common Lisp
+  Cookbook](https://lispcookbook.github.io/cl-cookbook/), because I
+  hadn't run across it in my initial setup exploration.
+- For a video guide to [installing Emacs and SBCL on
+  Windows](https://www.youtube.com/watch?v=VnWVu8VVDbI), see this
+  video from Baggers, who also live-streams his coding sessions
+  regularly.
+
 ## Table of contents
 * TOC
 {:toc}
