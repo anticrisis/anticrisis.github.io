@@ -261,3 +261,6 @@ but there are some issues with the spec and no fully-functional
 implementations available as of this date.
 
 Here's hoping and working toward a more equal world for all of us.
+
+As always comments are invited and appreciated, and are on
+[reddit](https://www.reddit.com/r/lisp/comments/6yxzga/equality_in_common_lisp/).
